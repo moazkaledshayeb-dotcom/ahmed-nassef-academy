@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أكاديمية أحمد ناصف | هنا المتعة في التعلم</title>
-    <!-- خطوط عصرية وأيقونات -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <!-- الخطوط والأيقونات -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         :root {
-            --bg-dark: #0a0f1d;
-            --card-bg: rgba(17, 24, 39, 0.85);
-            --primary-gold: #d4af37;
-            --accent-gold: #f3e5ab;
-            --text-main: #ffffff;
-            --text-muted: #9ca3af;
-            --border-gold: rgba(212, 175, 55, 0.3);
+            --navy: #080e1d;
+            --navy-light: #101a2e;
+            --gold: #d6ad59;
+            --gold-light: #f2d99c;
+            --text: #f7f3e9;
+            --muted: #a5adbd;
+            --card-bg: linear-gradient(145deg, #152137, #0d1525);
         }
 
         * {
@@ -24,457 +24,741 @@
             margin: 0;
             padding: 0;
             font-family: 'Cairo', sans-serif;
+        }
+
+        html {
             scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
+            background-color: var(--navy);
+            color: var(--text);
+            min-height: 100vh;
             overflow-x: hidden;
             position: relative;
         }
 
-        /* خلفية فخمة متحركة */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 30%, rgba(212, 175, 55, 0.07) 0%, transparent 70%);
-            z-index: -1;
+        /* الخلفية المضيئة والنجوم */
+        .ambient {
+            position: absolute;
+            width: 360px;
+            height: 360px;
+            border-radius: 50%;
+            filter: blur(110px);
+            opacity: .13;
+            pointer-events: none;
+            background: #d6ad59;
+            z-index: 0;
         }
+
+        .ambient-one { top: 180px; right: -200px; }
+        .ambient-two { top: 900px; left: -200px; }
 
         /* الهيدر العلوي */
-        header {
+        .topbar {
+            max-width: 1250px;
+            margin: auto;
+            padding: 22px 28px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 20px 6%;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            justify-content: space-between;
+            position: relative;
+            z-index: 10;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
         }
 
-        .logo-area {
+        .brand, .footer-brand {
             display: flex;
             align-items: center;
             gap: 12px;
+            text-decoration: none;
         }
 
-        .logo-icon {
-            width: 45px; height: 45px;
-            background: linear-gradient(135deg, var(--primary-gold), #aa771c);
+        .brand-mark {
+            width: 49px;
+            height: 49px;
+            display: grid;
+            place-items: center;
+            border: 1px solid var(--gold);
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--bg-dark);
+            color: var(--gold-light);
+            font-size: 19px;
             font-weight: 900;
-            font-size: 1.2rem;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 0 22px rgba(214, 173, 89, 0.13), inset 0 0 15px rgba(214, 173, 89, 0.08);
         }
 
-        .logo-text h1 {
-            font-size: 1.1rem;
-            font-weight: 700;
-        }
-
-        .logo-text p {
-            font-size: 0.75rem;
-            color: var(--primary-gold);
-        }
-
-        .login-btn {
-            background: transparent;
-            border: 1px solid var(--primary-gold);
-            color: var(--primary-gold);
-            padding: 8px 22px;
-            border-radius: 25px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .login-btn:hover {
-            background: var(--primary-gold);
-            color: var(--bg-dark);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
-            transform: translateY(-2px);
-        }
-
-        /* قسم الهيرو الرئيسي */
-        .hero {
-            text-align: center;
-            padding: 50px 20px 30px 20px;
-            animation: fadeIn 1s ease;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 70px; height: 70px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
-            border: 2px solid var(--primary-gold);
-            border-radius: 50%;
-            color: var(--primary-gold);
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
-            animation: pulseGlow 2s infinite;
-        }
-
-        .hero p.sub-welcome {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 10px;
-        }
-
-        .hero h2 {
-            font-size: clamp(2rem, 5vw, 3.2rem);
-            font-weight: 900;
-            margin-bottom: 20px;
-            background: linear-gradient(to left, #fff, var(--primary-gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1.4;
-        }
-
-        .hero > p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            max-width: 650px;
-            margin: 0 auto 35px auto;
-            line-height: 1.6;
-        }
-
-        .hero-cta {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 50px;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary-gold), #c59b27);
-            color: var(--bg-dark);
-            padding: 14px 35px;
-            border-radius: 30px;
-            font-weight: 700;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
-            font-size: 1rem;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
-        }
-
-        .btn-outline {
-            background: var(--card-bg);
-            color: var(--text-main);
-            border: 1px solid var(--border-gold);
-            padding: 14px 35px;
-            border-radius: 30px;
-            font-weight: 600;
-            cursor: pointer;
-            backdrop-filter: blur(5px);
-            transition: all 0.3s ease;
-            font-size: 1rem;
-        }
-
-        .btn-outline:hover {
-            border-color: var(--primary-gold);
-            color: var(--primary-gold);
-            transform: translateY(-3px);
-        }
-
-        /* الأقسام الأربعة المطابقة للفيديو والصور */
-        .features-section {
-            padding: 20px 6% 60px 6%;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 35px;
-        }
-
-        .section-header h3 {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 8px;
-        }
-
-        .section-header p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        .features-grid {
+        .brand-name {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+        }
+
+        .brand-name strong {
+            font-size: 15px;
+            color: var(--gold-light);
+        }
+
+        .brand-name span {
+            font-size: 11px;
+            color: var(--muted);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            font-size: 13px;
+        }
+
+        .nav-links a {
+            color: #d4d8e0;
+            text-decoration: none;
+            transition: color .25s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold-light);
+        }
+
+        .gold-button {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            border: 0;
+            border-radius: 9px;
+            color: #17130a;
+            background: linear-gradient(135deg, #f0d99f, #c99b43);
+            font-weight: 800;
+            padding: 12px 24px;
+            font-size: 14px;
+            box-shadow: 0 7px 25px rgba(214, 173, 89, 0.15);
+            transition: transform .25s, box-shadow .25s;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .gold-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(214, 173, 89, 0.27);
+        }
+
+        /* الهيرو الشعار الدائري والمجال الفضائي */
+        .hero {
+            max-width: 1200px;
+            min-height: 570px;
+            margin: auto;
+            padding: 65px 35px 70px;
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            align-items: center;
+            gap: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .welcome-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 8px 14px;
+            border: 1px solid rgba(214, 173, 89, 0.22);
+            border-radius: 30px;
+            background: rgba(214, 173, 89, 0.04);
+            color: var(--gold);
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .hero h1 {
+            font-size: clamp(39px, 5.5vw, 68px);
+            line-height: 1.35;
+            margin: 22px 0 12px;
+            font-weight: 900;
+        }
+
+        .hero h1 span, .section-heading h2 span {
+            color: var(--gold-light);
+            text-shadow: 0 0 30px rgba(214, 173, 89, 0.15);
+        }
+
+        .hero-description {
+            max-width: 480px;
+            color: #aeb7c7;
+            font-size: 15px;
+            line-height: 2.2;
+            margin-bottom: 27px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 13px;
+        }
+
+        .outline-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 12px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 9px;
+            color: #e8eaf0;
+            font-size: 13px;
+            text-decoration: none;
+            transition: .25s;
+        }
+
+        .outline-button:hover {
+            border-color: var(--gold);
+            color: var(--gold-light);
+        }
+
+        .hero-note {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #9ca8b9;
+            font-size: 11px;
+            margin-top: 28px;
+        }
+
+        .hero-note i { color: var(--gold); }
+
+        /* الشعار والمسارات الدائرية */
+        .hero-visual {
+            min-height: 410px;
+            position: relative;
+            display: grid;
+            place-items: center;
+        }
+
+        .hero-emblem {
+            width: 235px;
+            height: 235px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            position: relative;
+            z-index: 2;
+            background: linear-gradient(145deg, #26334a, #0b1221 70%);
+            border: 2px solid #d6ad59;
+            box-shadow: 0 0 35px rgba(214, 173, 89, 0.2), inset 0 0 35px rgba(214, 173, 89, 0.09);
+        }
+
+        .emblem-inner {
+            width: 205px;
+            height: 205px;
+            border: 1px solid rgba(214, 173, 89, 0.5);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .emblem-small { color: #d8c18f; font-size: 13px; }
+        .emblem-inner strong {
+            font-size: 64px;
+            line-height: 1.25;
+            color: var(--gold-light);
+            text-shadow: 0 0 22px rgba(214, 173, 89, 0.37);
+        }
+        .emblem-line { width: 65px; height: 1px; background: var(--gold); }
+        .emblem-name { margin-top: 8px; color: #eee0bc; font-size: 15px; }
+
+        .logo-glow {
+            position: absolute;
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            background: #d6ad59;
+            filter: blur(95px);
+            opacity: .15;
+        }
+
+        .orbit {
+            position: absolute;
+            border: 1px solid rgba(214, 173, 89, 0.37);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .orbit-one { width: 295px; height: 295px; animation: rotate 18s linear infinite; }
+        .orbit-two { width: 355px; height: 355px; border-style: dashed; opacity: .55; animation: rotate 28s linear infinite reverse; }
+        .orbit-three { width: 405px; height: 405px; border-color: rgba(255, 255, 255, 0.08); animation: rotate 40s linear infinite; }
+
+        .floating-card {
+            position: absolute;
+            z-index: 4;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            padding: 11px 15px;
+            border: 1px solid rgba(214, 173, 89, 0.25);
+            background: rgba(18, 29, 48, 0.93);
+            border-radius: 10px;
+            color: #eee2c3;
+            font-size: 11px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .floating-card i { color: var(--gold); }
+        .floating-top { top: 50px; right: 0; }
+        .floating-bottom { bottom: 50px; left: 0; animation-delay: -2s; }
+
+        /* كروت الإحصائيات والأدوات */
+        .stats {
+            max-width: 1050px;
+            margin: 0 auto 75px;
+            padding: 24px 30px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 13px;
+            border-left: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .stat:last-child { border-left: 0; }
+        .stat i { color: var(--gold); font-size: 24px; }
+        .stat div { display: flex; flex-direction: column; }
+        .stat strong { color: #f1dfb7; font-size: 15px; }
+        .stat span { color: var(--muted); font-size: 11px; }
+
+        /* الأقسام الستة الكروت المميزة */
+        .sections-section {
+            max-width: 1150px;
+            margin: auto;
+            padding: 45px 28px 90px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-heading { text-align: center; margin-bottom: 40px; }
+        .eyebrow { color: var(--gold); font-size: 12px; font-weight: 700; }
+        .section-heading h2 { font-size: clamp(27px, 4vw, 39px); margin: 10px 0; }
+        .section-heading p { color: var(--muted); font-size: 13px; }
+
+        .sections-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
         }
 
         .feature-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 20px;
-            padding: 25px 30px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            backdrop-filter: blur(10px);
-            transition: all 0.35s ease;
+            text-align: right;
             position: relative;
             overflow: hidden;
+            padding: 26px 23px;
+            min-height: 220px;
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 14px;
+            background: var(--card-bg);
+            color: var(--text);
+            transition: transform .3s, border-color .3s, box-shadow .3s;
+            cursor: pointer;
         }
 
         .feature-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-gold);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(212, 175, 55, 0.15);
+            transform: translateY(-7px);
+            border-color: rgba(214, 173, 89, 0.44);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25), 0 0 25px rgba(214, 173, 89, 0.06);
         }
 
-        .feature-info {
-            text-align: right;
+        .card-number {
+            position: absolute;
+            top: 15px;
+            left: 17px;
+            color: rgba(255, 255, 255, 0.14);
+            font-size: 25px;
+            font-weight: 800;
         }
 
-        .feature-info h4 {
-            font-size: 1.4rem;
-            color: var(--primary-gold);
-            margin-bottom: 6px;
+        .feature-icon {
+            width: 49px;
+            height: 49px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(214, 173, 89, 0.37);
+            border-radius: 12px;
+            color: var(--gold-light);
+            background: rgba(214, 173, 89, 0.06);
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .feature-card h3 { font-size: 17px; margin: 0 0 7px; }
+        .feature-card p { color: var(--muted); font-size: 12px; line-height: 2; margin: 0 0 13px; }
+
+        .card-link {
+            color: var(--gold);
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 11px;
             font-weight: 700;
         }
 
-        .feature-info p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        .feature-icon-box {
-            width: 60px; height: 60px;
-            background: rgba(212, 175, 55, 0.1);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-gold);
-            font-size: 1.6rem;
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover .feature-icon-box {
-            background: var(--primary-gold);
-            color: var(--bg-dark);
-            transform: scale(1.1);
-        }
-
-        /* بوابة الدخول السريعة المطابقة للفيديو */
-        .gateway-box {
-            background: linear-gradient(135deg, rgba(17, 24, 39, 0.95), rgba(10, 15, 29, 0.98));
-            border: 1px solid var(--border-gold);
-            border-radius: 25px;
-            padding: 35px 25px;
-            max-width: 750px;
-            margin: 30px auto 60px auto;
+        /* رسالتنا وفوتر الأكاديمية */
+        .quote-section {
+            max-width: 900px;
+            margin: 0 auto 90px;
+            padding: 60px 30px;
             text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-            animation: scaleUp 0.8s ease;
+            border-top: 1px solid rgba(214, 173, 89, 0.18);
+            border-bottom: 1px solid rgba(214, 173, 89, 0.18);
+            position: relative;
+            background: radial-gradient(ellipse, rgba(214, 173, 89, 0.04), transparent 70%);
         }
 
-        .gateway-box h3 {
-            font-size: 1.8rem;
-            margin-bottom: 8px;
-            color: var(--text-main);
-        }
+        .quote-decoration { color: var(--gold); font-size: 27px; margin-bottom: 10px; }
+        .quote-section h2 { color: var(--gold-light); font-size: 32px; margin: 12px 0; }
+        .quote-section p { color: var(--muted); font-size: 14px; line-height: 2.2; max-width: 650px; margin: auto; }
+        .quote-signature { color: #d8bd83; margin-top: 23px; font-weight: 700; font-size: 13px; }
 
-        .gateway-box p {
-            color: var(--text-muted);
-            margin-bottom: 25px;
-            font-size: 0.95rem;
-        }
-
-        .gateway-buttons {
+        .footer {
+            max-width: 1200px;
+            margin: auto;
+            padding: 25px 28px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
             display: flex;
+            justify-content: space-between;
+            align-items: center;
             gap: 15px;
-            justify-content: center;
             flex-wrap: wrap;
         }
 
-        .gateway-buttons button {
-            flex: 1;
-            min-width: 240px;
-            padding: 14px 25px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        .copyright, .developer { color: #7f899a; font-size: 11px; }
+        .developer span { color: var(--gold); font-weight: 700; }
+
+        /* نافذة شاشة الدخول الذكية (Modal) */
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            display: none;
+            place-items: center;
+            padding: 20px;
+            background: rgba(3, 7, 18, 0.85);
+            backdrop-filter: blur(9px);
         }
 
-        .btn-student {
-            background: linear-gradient(135deg, var(--primary-gold), #c59b27);
-            color: var(--bg-dark);
-            border: none;
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
-        }
-
-        .btn-student:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5);
-        }
-
-        .btn-parent {
-            background: transparent;
-            color: var(--text-main);
-            border: 1px solid var(--primary-gold);
-        }
-
-        .btn-parent:hover {
-            background: rgba(212, 175, 55, 0.1);
-            transform: translateY(-3px);
-        }
-
-        /* الفوتر */
-        footer {
+        .portal-modal {
+            width: 100%;
+            max-width: 440px;
+            position: relative;
+            padding: 35px 25px 25px;
             text-align: center;
-            padding: 35px 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            line-height: 1.8;
+            border: 1px solid rgba(214, 173, 89, 0.37);
+            border-radius: 18px;
+            background: #111c30;
+            box-shadow: 0 25px 90px rgba(0,0,0,0.6);
         }
 
-        footer span {
-            color: var(--primary-gold);
-            font-weight: 600;
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: transparent;
+            border: 0;
+            color: var(--muted);
+            font-size: 20px;
+            cursor: pointer;
         }
 
-        /* الحركات والانيميشن */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .form-group {
+            text-align: right;
+            margin-top: 15px;
         }
 
-        @keyframes scaleUp {
-            from { opacity: 0; transform: scale(0.96); }
-            to { opacity: 1; transform: scale(1); }
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            color: var(--gold-light);
+            margin-bottom: 6px;
         }
 
-        @keyframes pulseGlow {
-            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        .form-input, .form-select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: #080e1d;
+            color: #fff;
+            font-size: 13px;
+            outline: none;
         }
 
-        @media (max-width: 768px) {
-            .feature-card {
-                flex-direction: column-reverse;
-                text-align: center;
-                gap: 15px;
-            }
-            .feature-info {
-                text-align: center;
-            }
+        .form-input:focus, .form-select:focus {
+            border-color: var(--gold);
+        }
+
+        .forget-code {
+            display: block;
+            margin-top: 10px;
+            font-size: 11px;
+            color: var(--muted);
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        /* الانيميشن */
+        @keyframes rotate { to { transform: rotate(360deg); } }
+        @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-11px); } }
+
+        @media (max-width: 800px) {
+            .hero { grid-template-columns: 1fr; text-align: center; }
+            .sections-grid { grid-template-columns: 1fr; }
+            .stats { grid-template-columns: 1fr; gap: 15px; }
+            .stat { border-left: 0; justify-content: center; }
+            .floating-top { right: 5%; }
+            .floating-bottom { left: 5%; }
         }
     </style>
 </head>
 <body>
 
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
     <!-- الهيدر -->
-    <header>
-        <div class="logo-area">
-            <div class="logo-icon">أ</div>
-            <div class="logo-text">
-                <h1>أكاديمية أحمد ناصف</h1>
-                <p>هنا المتعة في التعلم</p>
+    <header class="topbar">
+        <a href="#" class="brand">
+            <div class="brand-mark">أ ن</div>
+            <div class="brand-name">
+                <strong>أكاديمية أحمد ناصف</strong>
+                <span>هنا المتعة في التعلم</span>
             </div>
-        </div>
-        <button class="login-btn" onclick="alert('تسجيل الدخول الذكي قيد التشغيل')">تسجيل الدخول</button>
+        </a>
+
+        <nav class="nav-links">
+            <a href="#home">الرئيسية</a>
+            <a href="#sections">أقسام الأكاديمية</a>
+            <a href="#about">عن الأكاديمية</a>
+        </nav>
+
+        <button class="gold-button" onclick="openLoginModal('دخول المنصة')">
+            دخول المنصة <i class="fa-solid fa-arrow-left"></i>
+        </button>
     </header>
 
-    <!-- قسم الهيرو -->
-    <section class="hero">
-        <div class="hero-badge"><i class="fa-solid fa-graduation-cap"></i></div>
-        <p class="sub-welcome">مرحبًا بكم في عالم التميز</p>
-        <h2>رحلتك نحو التفوق والنجاح تبدأ من هنا</h2>
-        <p>منصة تعليمية متكاملة تجمع المحاضرات والامتحانات والمتابعة المستمرة، لتكون رحلتك التعليمية أسهل وأكثر متعة وتميزًا.</p>
-        
-        <div class="hero-cta">
-            <button class="btn-primary" onclick="alert('أهلاً بك في رحلتك التعليمية')">ابدأ رحلتك التعليمية</button>
-            <button class="btn-outline" onclick="alert('استكشف أقسام الأكاديمية')">اكتشف الأكاديمية</button>
+    <!-- الهيرو -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="welcome-label">
+                <i class="fa-solid fa-sparkles"></i>
+                <span>رحلتك نحو التفوق تبدأ من هنا</span>
+            </div>
+
+            <h1>مرحبًا بك في<br><span>عالم التميز</span></h1>
+
+            <p class="hero-description">
+                مع أكاديمية أحمد ناصف، التعلم مش مجرد مذاكرة... دي رحلة ممتعة نحو النجاح والتفوق.
+            </p>
+
+            <div class="hero-actions">
+                <button class="gold-button" onclick="openLoginModal('الدخول إلى المنصة')">
+                    ابدأ رحلتك الآن <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <a href="#sections" class="outline-button">
+                    اكتشف الأكاديمية <i class="fa-solid fa-chevron-left"></i>
+                </a>
+            </div>
+
+            <div class="hero-note">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>بيئة تعليمية منظمة وآمنة لطلابنا</span>
+            </div>
+        </div>
+
+        <!-- الشعار الدائري الأسطوري بالحلقات والـ Hover -->
+        <div class="hero-visual">
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
+            <div class="orbit orbit-three"></div>
+
+            <div class="logo-glow"></div>
+            <div class="hero-emblem">
+                <div class="emblem-inner">
+                    <span class="emblem-small">أكاديمية</span>
+                    <strong>أ ن</strong>
+                    <span class="emblem-line"></span>
+                    <span class="emblem-name">أحمد ناصف</span>
+                </div>
+            </div>
+
+            <div class="floating-card floating-top">
+                <i class="fa-solid fa-star"></i>
+                <span>طموح بلا حدود</span>
+            </div>
+            <div class="floating-card floating-bottom">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span>مستقبلك يبدأ هنا</span>
+            </div>
         </div>
     </section>
 
-    <!-- الأقسام الأربعة بالتصميم المطابق -->
-    <section class="features-section">
-        <div class="section-header">
-            <h3>كل ما تحتاجه في مكان واحد</h3>
-            <p>أدوات تعليمية ومتابعة مستمرة لتحقيق أفضل النتائج</p>
+    <!-- شريط المميزات الإحصائية -->
+    <section class="stats">
+        <div class="stat">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <div><strong>تعلم</strong><span>بأسلوب مختلف</span></div>
+        </div>
+        <div class="stat">
+            <i class="fa-solid fa-trophy"></i>
+            <div><strong>تميز</strong><span>خطوة نحو النجاح</span></div>
+        </div>
+        <div class="stat">
+            <i class="fa-solid fa-users"></i>
+            <div><strong>مجتمع</strong><span>تعليمي متكامل</span></div>
+        </div>
+    </section>
+
+    <!-- أقسام الأكاديمية الكروت الستة -->
+    <section class="sections-section" id="sections">
+        <div class="section-heading">
+            <span class="eyebrow">اكتشف عالم الأكاديمية</span>
+            <h2>كل ما تحتاجه <span>في مكان واحد</span></h2>
+            <p>تجربة تعليمية متكاملة تجمع بين الشرح والتدريب والمتابعة والتواصل.</p>
         </div>
 
-        <div class="features-grid">
-            <!-- المحاضرات -->
-            <div class="feature-card">
-                <div class="feature-info">
-                    <h4>المحاضرات</h4>
-                    <p>تابع محاضراتك التعليمية في أي وقت وبأعلى جودة.</p>
-                </div>
-                <div class="feature-icon-box"><i class="fa-solid fa-book-open"></i></div>
+        <div class="sections-grid">
+            <div class="feature-card" onclick="openLoginModal('قسم المحاضرات')">
+                <span class="card-number">01</span>
+                <div class="feature-icon"><i class="fa-solid fa-book-open"></i></div>
+                <h3>المحاضرات</h3>
+                <p>عِش تجربة تعليمية مختلفة مع شرح متميز وشامل.</p>
+                <span class="card-link">اكتشف المزيد <i class="fa-solid fa-arrow-left"></i></span>
             </div>
 
-            <!-- الامتحانات -->
-            <div class="feature-card">
-                <div class="feature-info">
-                    <h4>الامتحانات</h4>
-                    <p>اختبر مستواك وتابع نتائجك وتصحيحك الفوري.</p>
-                </div>
-                <div class="feature-icon-box"><i class="fa-solid fa-file-pen"></i></div>
+            <div class="feature-card" onclick="openLoginModal('قسم الامتحانات')">
+                <span class="card-number">02</span>
+                <div class="feature-icon"><i class="fa-solid fa-clipboard-list"></i></div>
+                <h3>الامتحانات</h3>
+                <p>اختبر مستواك وتابع نتائجك وتصحيحك أولاً بأول.</p>
+                <span class="card-link">اكتشف المزيد <i class="fa-solid fa-arrow-left"></i></span>
             </div>
 
-            <!-- متابعة المستوى -->
-            <div class="feature-card">
-                <div class="feature-info">
-                    <h4>متابعة المستوى</h4>
-                    <p>تعرف على تقدمك ونقاط قوتك بدوائر التقدم الذكية.</p>
-                </div>
-                <div class="feature-icon-box"><i class="fa-solid fa-chart-line"></i></div>
+            <div class="feature-card" onclick="openLoginModal('متابعة المستوى')">
+                <span class="card-number">03</span>
+                <div class="feature-icon"><i class="fa-solid fa-trophy"></i></div>
+                <h3>متابعة المستوى</h3>
+                <p>تابع تقدمك وخطواتك نحو التفوق بدوائر التقدم الذكية.</p>
+                <span class="card-link">اكتشف المزيد <i class="fa-solid fa-arrow-left"></i></span>
             </div>
 
-            <!-- المناقشات -->
-            <div class="feature-card">
-                <div class="feature-info">
-                    <h4>المناقشات</h4>
-                    <p>اسأل وناقش زملائك والمدرسين داخل منتدى الصف.</p>
-                </div>
-                <div class="feature-icon-box"><i class="fa-solid fa-comments"></i></div>
+            <div class="feature-card" onclick="openLoginModal('منتدى المناقشات')">
+                <span class="card-number">04</span>
+                <div class="feature-icon"><i class="fa-solid fa-comments"></i></div>
+                <h3>المناقشات</h3>
+                <p>اسأل وشارك أفكارك مع زملائك والمستر والدعم العلمي.</p>
+                <span class="card-link">اكتشف المزيد <i class="fa-solid fa-arrow-left"></i></span>
+            </div>
+
+            <div class="feature-card" onclick="openLoginModal('المكتبة التعليمية')">
+                <span class="card-number">05</span>
+                <div class="feature-icon"><i class="fa-solid fa-folder-open"></i></div>
+                <h3>المكتبة التعليمية</h3>
+                <p>كل ملازمك وملفاتك والمذكرات في مكان واحد.</p>
+                <span class="card-link">اكتشف المزيد <i class="fa-solid fa-arrow-left"></i></span>
+            </div>
+
+            <div class="feature-card" onclick="openLoginModal('حضور السنتر')">
+                <span class="card-number">06</span>
+                <div class="feature-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                <h3>متابعة الحضور</h3>
+                <p>سجل وتابع حضورك في السنتر والمحاضرات بسهولة.</p>
+                <span class="card-link">اكتشف المزيد <i class="fa-solid fa-arrow-left"></i></span>
             </div>
         </div>
     </section>
 
-    <!-- بوابة الدخول للأكاديمية -->
-    <div class="gateway-box">
-        <h3>بوابتك إلى الأكاديمية</h3>
-        <p>اختر نوع حسابك للبدء ومتابعة مهامك التعليمية</p>
-        <div class="gateway-buttons">
-            <button class="btn-student" onclick="alert('دخول الطلاب الذكي')">دخول الطلاب</button>
-            <button class="btn-parent" onclick="alert('دخول أولياء الأمور')">دخول أولياء الأمور</button>
+    <!-- رسالتنا -->
+    <section class="quote-section" id="about">
+        <div class="quote-decoration">✦</div>
+        <span class="eyebrow">رسالتنا</span>
+        <h2>هنا المتعة في التعلم</h2>
+        <p>لأن كل طالب يستحق فرصة حقيقية للتفوق، صممنا تجربة تعليمية تساعدك على التعلم والمتابعة وتحقيق أفضل ما لديك.</p>
+        <div class="quote-signature">أكاديمية أحمد ناصف</div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer class="footer">
+        <div class="brand">
+            <div class="brand-mark">أ ن</div>
+            <div class="brand-name">
+                <strong>أكاديمية أحمد ناصف</strong>
+                <span>هنا المتعة في التعلم</span>
+            </div>
+        </div>
+        <span class="copyright">جميع الحقوق محفوظة لأكاديمية أحمد ناصف &copy; 2026</span>
+        <span class="developer">المؤسس والمطور التقني: <span>شعيب</span></span>
+    </footer>
+
+    <!-- شاشة تسجيل الدخول الذكية (Modal) -->
+    <div class="modal-backdrop" id="loginModal">
+        <div class="portal-modal">
+            <button class="modal-close" onclick="closeLoginModal()">&times;</button>
+            <div class="brand-mark" style="margin: 0 auto 15px auto;">أ ن</div>
+            <span class="eyebrow">أكاديمية أحمد ناصف</span>
+            <h2 id="modalTitle">تسجيل الدخول الذكي</h2>
+
+            <div style="margin-top: 20px;">
+                <div class="form-group">
+                    <label>اختر الصف الدراسي:</label>
+                    <select class="form-select" id="gradeSelect">
+                        <option value="">-- اختر الصف الدراسي --</option>
+                        <option value="1">الصف الأول الثانوي</option>
+                        <option value="2">الصف الثاني الثانوي</option>
+                        <option value="3">الصف الثالث الثانوي</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>ابحث عن اسمك:</label>
+                    <input type="text" class="form-input" id="studentSearch" placeholder="اكتب حرف من اسمك للاقتراح...">
+                </div>
+
+                <div class="form-group">
+                    <label>الكود السري الخاص بك:</label>
+                    <input type="password" class="form-input" placeholder="أدخل الكود السري">
+                </div>
+
+                <span class="forget-code" onclick="alert('سيتم توجيه طلبك للإدارة لإرسال الكود عبر الواتساب')">نسيت الكود السري؟</span>
+
+                <button class="gold-button" style="width: 100%; margin-top: 20px;" onclick="alert('مرحباً بك! جارٍ فتح حسابك...')">
+                    دخول الحساب <i class="fa-solid fa-right-to-bracket"></i>
+                </button>
+            </div>
         </div>
     </div>
 
-    <!-- الفوتر -->
-    <footer>
-        <p>&copy; 2026 <span>أكاديمية أحمد ناصف</span> - جميع الحقوق محفوظة</p>
-        <p style="margin-top: 4px;">هنا المتعة في التعلم | مؤسس ومطور المنصة: <span>شعيب</span></p>
-    </footer>
+    <script>
+        function openLoginModal(title) {
+            document.getElementById('modalTitle').innerText = title || 'تسجيل الدخول الذكي';
+            document.getElementById('loginModal').style.display = 'grid';
+        }
 
+        function closeLoginModal() {
+            document.getElementById('loginModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            var modal = document.getElementById('loginModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
