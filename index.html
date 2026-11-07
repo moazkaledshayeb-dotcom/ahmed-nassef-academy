@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أكاديمية أحمد ناصف | هنا المتعة في التعلم</title>
-    <!-- استدعاء خطوط عصرية وأيقونات -->
+    <!-- خطوط عصرية وأيقونات -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
             --bg-dark: #0a0f1d;
-            --card-bg: rgba(17, 24, 39, 0.75);
+            --card-bg: rgba(17, 24, 39, 0.85);
             --primary-gold: #d4af37;
             --accent-gold: #f3e5ab;
-            --text-main: #f9fafb;
+            --text-main: #ffffff;
             --text-muted: #9ca3af;
             --border-gold: rgba(212, 175, 55, 0.3);
         }
@@ -34,12 +34,12 @@
             position: relative;
         }
 
-        /* خلفية تفاعلية متحركة */
+        /* خلفية فخمة متحركة */
         body::before {
             content: '';
-            position: absolute;
+            position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 60%);
+            background: radial-gradient(circle at 50% 30%, rgba(212, 175, 55, 0.07) 0%, transparent 70%);
             z-index: -1;
         }
 
@@ -48,13 +48,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 5%;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 20px 6%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
             backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 100;
-            animation: slideDown 0.8s ease;
         }
 
         .logo-area {
@@ -74,13 +73,11 @@
             font-weight: 900;
             font-size: 1.2rem;
             box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
-            animation: pulseGlow 2s infinite;
         }
 
         .logo-text h1 {
             font-size: 1.1rem;
             font-weight: 700;
-            color: var(--text-main);
         }
 
         .logo-text p {
@@ -92,7 +89,7 @@
             background: transparent;
             border: 1px solid var(--primary-gold);
             color: var(--primary-gold);
-            padding: 8px 20px;
+            padding: 8px 22px;
             border-radius: 25px;
             font-weight: 600;
             cursor: pointer;
@@ -106,39 +103,49 @@
             transform: translateY(-2px);
         }
 
-        /* قسم الهيرو (البداية) */
+        /* قسم الهيرو الرئيسي */
         .hero {
             text-align: center;
-            padding: 60px 20px;
-            animation: fadeIn 1.2s ease;
+            padding: 50px 20px 30px 20px;
+            animation: fadeIn 1s ease;
         }
 
         .hero-badge {
-            display: inline-block;
-            background: rgba(212, 175, 55, 0.1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px; height: 70px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
+            border: 2px solid var(--primary-gold);
+            border-radius: 50%;
             color: var(--primary-gold);
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
+            font-size: 1.8rem;
             margin-bottom: 20px;
-            border: 1px solid var(--border-gold);
-            animation: float 3s ease-in-out infinite;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
+            animation: pulseGlow 2s infinite;
+        }
+
+        .hero p.sub-welcome {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 10px;
         }
 
         .hero h2 {
             font-size: clamp(2rem, 5vw, 3.2rem);
             font-weight: 900;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             background: linear-gradient(to left, #fff, var(--primary-gold));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            line-height: 1.4;
         }
 
-        .hero p {
+        .hero > p {
             color: var(--text-muted);
-            font-size: 1rem;
-            max-width: 600px;
-            margin: 0 auto 30px auto;
+            font-size: 0.95rem;
+            max-width: 650px;
+            margin: 0 auto 35px auto;
             line-height: 1.6;
         }
 
@@ -147,35 +154,38 @@
             gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
+            margin-bottom: 50px;
         }
 
         .btn-primary {
             background: linear-gradient(135deg, var(--primary-gold), #c59b27);
             color: var(--bg-dark);
-            padding: 12px 30px;
+            padding: 14px 35px;
             border-radius: 30px;
             font-weight: 700;
             border: none;
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+            font-size: 1rem;
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px) scale(1.03);
+            transform: translateY(-3px) scale(1.02);
             box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
         }
 
         .btn-outline {
             background: var(--card-bg);
             color: var(--text-main);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 12px 30px;
+            border: 1px solid var(--border-gold);
+            padding: 14px 35px;
             border-radius: 30px;
             font-weight: 600;
             cursor: pointer;
             backdrop-filter: blur(5px);
             transition: all 0.3s ease;
+            font-size: 1rem;
         }
 
         .btn-outline:hover {
@@ -184,119 +194,112 @@
             transform: translateY(-3px);
         }
 
-        /* قسم الأقسام المميزة (الكروت) */
+        /* الأقسام الأربعة المطابقة للفيديو والصور */
         .features-section {
-            padding: 40px 5% 80px 5%;
-            max-width: 1200px;
+            padding: 20px 6% 60px 6%;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
-        .section-title {
+        .section-header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 35px;
         }
 
-        .section-title h3 {
+        .section-header h3 {
             font-size: 2rem;
             font-weight: 800;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
-        .section-title p {
+        .section-header p {
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
         .feature-card {
             background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 20px;
-            padding: 30px 20px;
-            text-align: center;
+            padding: 25px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             backdrop-filter: blur(10px);
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transition: all 0.35s ease;
             position: relative;
             overflow: hidden;
         }
 
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 3px;
-            background: linear-gradient(to left, transparent, var(--primary-gold), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
         .feature-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--border-gold);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(212, 175, 55, 0.1);
+            transform: translateY(-5px);
+            border-color: var(--primary-gold);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(212, 175, 55, 0.15);
         }
 
-        .feature-card:hover::before {
-            opacity: 1;
+        .feature-info {
+            text-align: right;
         }
 
-        .feature-icon {
-            width: 70px; height: 70px;
-            background: rgba(212, 175, 55, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px auto;
+        .feature-info h4 {
+            font-size: 1.4rem;
             color: var(--primary-gold);
-            font-size: 1.8rem;
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover .feature-icon {
-            transform: scale(1.1) rotate(5deg);
-            background: var(--primary-gold);
-            color: var(--bg-dark);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
-        }
-
-        .feature-card h4 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
+            margin-bottom: 6px;
             font-weight: 700;
         }
 
-        .feature-card p {
+        .feature-info p {
             color: var(--text-muted);
             font-size: 0.9rem;
-            line-height: 1.5;
         }
 
-        /* بوابة الدخول السريعة */
+        .feature-icon-box {
+            width: 60px; height: 60px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-gold);
+            font-size: 1.6rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon-box {
+            background: var(--primary-gold);
+            color: var(--bg-dark);
+            transform: scale(1.1);
+        }
+
+        /* بوابة الدخول السريعة المطابقة للفيديو */
         .gateway-box {
-            background: linear-gradient(135deg, rgba(17, 24, 39, 0.9), rgba(10, 15, 29, 0.95));
+            background: linear-gradient(135deg, rgba(17, 24, 39, 0.95), rgba(10, 15, 29, 0.98));
             border: 1px solid var(--border-gold);
             border-radius: 25px;
-            padding: 40px;
-            max-width: 700px;
-            margin: 20px auto 60px auto;
+            padding: 35px 25px;
+            max-width: 750px;
+            margin: 30px auto 60px auto;
             text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
             animation: scaleUp 0.8s ease;
         }
 
         .gateway-box h3 {
             font-size: 1.8rem;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            color: var(--text-main);
         }
 
         .gateway-box p {
             color: var(--text-muted);
             margin-bottom: 25px;
+            font-size: 0.95rem;
         }
 
         .gateway-buttons {
@@ -306,13 +309,48 @@
             flex-wrap: wrap;
         }
 
+        .gateway-buttons button {
+            flex: 1;
+            min-width: 240px;
+            padding: 14px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-student {
+            background: linear-gradient(135deg, var(--primary-gold), #c59b27);
+            color: var(--bg-dark);
+            border: none;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-student:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-parent {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--primary-gold);
+        }
+
+        .btn-parent:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-3px);
+        }
+
         /* الفوتر */
         footer {
             text-align: center;
-            padding: 30px;
+            padding: 35px 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             color: var(--text-muted);
             font-size: 0.85rem;
+            line-height: 1.8;
         }
 
         footer span {
@@ -320,31 +358,32 @@
             font-weight: 600;
         }
 
-        /* حركات الأنيميشن المطرقعة */
+        /* الحركات والانيميشن */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
         @keyframes scaleUp {
-            from { opacity: 0; transform: scale(0.95); }
+            from { opacity: 0; transform: scale(0.96); }
             to { opacity: 1; transform: scale(1); }
         }
 
         @keyframes pulseGlow {
             0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
-            70% { box-shadow: 0 0 0 12px rgba(212, 175, 55, 0); }
+            70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
             100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
+        @media (max-width: 768px) {
+            .feature-card {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 15px;
+            }
+            .feature-info {
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -359,65 +398,82 @@
                 <p>هنا المتعة في التعلم</p>
             </div>
         </div>
-        <button class="login-btn" onclick="alert('جارٍ الانتقال لصفحة تسجيل الدخول الذكية...')">تسجيل الدخول</button>
+        <button class="login-btn" onclick="alert('تسجيل الدخول الذكي قيد التشغيل')">تسجيل الدخول</button>
     </header>
 
-    <!-- الهيرو -->
+    <!-- قسم الهيرو -->
     <section class="hero">
-        <div class="hero-badge"><i class="fa-solid fa-graduation-cap"></i> المنصة التعليمية الأقوى للثانوية العامة</div>
+        <div class="hero-badge"><i class="fa-solid fa-graduation-cap"></i></div>
+        <p class="sub-welcome">مرحبًا بكم في عالم التميز</p>
         <h2>رحلتك نحو التفوق والنجاح تبدأ من هنا</h2>
         <p>منصة تعليمية متكاملة تجمع المحاضرات والامتحانات والمتابعة المستمرة، لتكون رحلتك التعليمية أسهل وأكثر متعة وتميزًا.</p>
+        
         <div class="hero-cta">
-            <button class="btn-primary" onclick="alert('مرحباً بك في رحلتك التعليمية!')">ابدأ رحلتك التعليمية</button>
-            <button class="btn-outline" onclick="alert('اكتشف أقسام الأكاديمية بالأسفل')">اكتشف الأكاديمية</button>
+            <button class="btn-primary" onclick="alert('أهلاً بك في رحلتك التعليمية')">ابدأ رحلتك التعليمية</button>
+            <button class="btn-outline" onclick="alert('استكشف أقسام الأكاديمية')">اكتشف الأكاديمية</button>
         </div>
     </section>
 
-    <!-- الأقسام والكروت التفاعلية -->
+    <!-- الأقسام الأربعة بالتصميم المطابق -->
     <section class="features-section">
-        <div class="section-title">
+        <div class="section-header">
             <h3>كل ما تحتاجه في مكان واحد</h3>
             <p>أدوات تعليمية ومتابعة مستمرة لتحقيق أفضل النتائج</p>
         </div>
 
         <div class="features-grid">
+            <!-- المحاضرات -->
             <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-book-open"></i></div>
-                <h4>المحاضرات</h4>
-                <p>تابع محاضراتك التعليمية في أي وقت وبأعلى جودة حماية.</p>
+                <div class="feature-info">
+                    <h4>المحاضرات</h4>
+                    <p>تابع محاضراتك التعليمية في أي وقت وبأعلى جودة.</p>
+                </div>
+                <div class="feature-icon-box"><i class="fa-solid fa-book-open"></i></div>
             </div>
+
+            <!-- الامتحانات -->
             <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-file-pen"></i></div>
-                <h4>الامتحانات</h4>
-                <p>اختبر مستواك وتابع نتائجك وتصحيحك الفوري للأسئلة.</p>
+                <div class="feature-info">
+                    <h4>الامتحانات</h4>
+                    <p>اختبر مستواك وتابع نتائجك وتصحيحك الفوري.</p>
+                </div>
+                <div class="feature-icon-box"><i class="fa-solid fa-file-pen"></i></div>
             </div>
+
+            <!-- متابعة المستوى -->
             <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-chart-line"></i></div>
-                <h4>متابعة المستوى</h4>
-                <p>تعرف على تقدمك ونقاط قوتك بدوائر التقدم الذكية.</p>
+                <div class="feature-info">
+                    <h4>متابعة المستوى</h4>
+                    <p>تعرف على تقدمك ونقاط قوتك بدوائر التقدم الذكية.</p>
+                </div>
+                <div class="feature-icon-box"><i class="fa-solid fa-chart-line"></i></div>
             </div>
+
+            <!-- المناقشات -->
             <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-comments"></i></div>
-                <h4>المناقشات</h4>
-                <p>اسأل وناقش زملائك والمدرسين داخل منتدى الصف.</p>
+                <div class="feature-info">
+                    <h4>المناقشات</h4>
+                    <p>اسأل وناقش زملائك والمدرسين داخل منتدى الصف.</p>
+                </div>
+                <div class="feature-icon-box"><i class="fa-solid fa-comments"></i></div>
             </div>
         </div>
     </section>
 
-    <!-- بوابة الدخول السريعة -->
+    <!-- بوابة الدخول للأكاديمية -->
     <div class="gateway-box">
         <h3>بوابتك إلى الأكاديمية</h3>
-        <p>اختر نوع حسابك للبدء فوراً ومتابعة مهامك التعليمية</p>
+        <p>اختر نوع حسابك للبدء ومتابعة مهامك التعليمية</p>
         <div class="gateway-buttons">
-            <button class="btn-primary" onclick="alert('دخول الطلاب الذكي')">دخول الطلاب</button>
-            <button class="btn-outline" onclick="alert('دخول أولياء الأمور')">دخول أولياء الأمور</button>
+            <button class="btn-student" onclick="alert('دخول الطلاب الذكي')">دخول الطلاب</button>
+            <button class="btn-parent" onclick="alert('دخول أولياء الأمور')">دخول أولياء الأمور</button>
         </div>
     </div>
 
     <!-- الفوتر -->
     <footer>
-        <p>&copy; 2026 <span>أكاديمية أحمد ناصف</span> - جميع الحقوق محفوظة | مؤسس ومطور المنصة: <span>شعيب</span></p>
-        <p style="margin-top: 5px; font-size: 0.75rem; color: #6b7280;">هنا المتعة في التعلم</p>
+        <p>&copy; 2026 <span>أكاديمية أحمد ناصف</span> - جميع الحقوق محفوظة</p>
+        <p style="margin-top: 4px;">هنا المتعة في التعلم | مؤسس ومطور المنصة: <span>شعيب</span></p>
     </footer>
 
 </body>
